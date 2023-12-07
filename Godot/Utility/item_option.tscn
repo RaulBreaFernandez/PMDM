@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://djgg0gec2oaxh"]
+
+[ext_resource type="Script" path="res://Utility/item_option.gd" id="1_jqifv"]
+[ext_resource type="Texture2D" uid="uid://c0d63iocv84if" path="res://Utility/Wooden Sword.png" id="1_kclwi"]
+
+[node name="ItemOption" type="ColorRect"]
+custom_minimum_size = Vector2(180, 60)
+anchors_preset = -1
+anchor_right = 0.093
+anchor_bottom = 0.074
+offset_right = 1.44003
+offset_bottom = 0.0799942
+mouse_force_pass_scroll_events = false
+color = Color(0.443137, 0.443137, 0.443137, 1)
+script = ExtResource("1_jqifv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 32.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="ItemIcon" type="TextureRect" parent="ColorRect"]
+texture_filter = 5
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kclwi")
+
+[node name="Label_Name" type="Label" parent="."]
+texture_filter = 5
+layout_mode = 0
+offset_left = 41.0
+offset_top = 10.0
+offset_right = 331.0
+offset_bottom = 150.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 100
+text = "Name"
+
+[node name="Label_Description" type="Label" parent="."]
+texture_filter = 3
+layout_mode = 0
+offset_left = 4.0
+offset_top = 38.0
+offset_right = 1724.0
+offset_bottom = 448.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 55
+text = "Description of item
+"
+autowrap_mode = 2
+justification_flags = 35
+
+[node name="Label_Level" type="Label" parent="."]
+texture_filter = 5
+layout_mode = 0
+offset_left = 120.0
+offset_top = 10.0
+offset_right = 482.0
+offset_bottom = 150.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 100
+text = "Level: 1"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

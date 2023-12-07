@@ -1,0 +1,430 @@
+[gd_scene load_steps=49 format=3 uid="uid://dcyehsd7att4k"]
+
+[ext_resource type="Texture2D" uid="uid://chrdeegcnklrc" path="res://warrior/WarriorDownAttack01.png" id="1_4fmsv"]
+[ext_resource type="Script" path="res://world/character.gd" id="1_nexjq"]
+[ext_resource type="Texture2D" uid="uid://cfs84m3pq7060" path="res://warrior/WarriorLeftAttack01.png" id="2_ynj02"]
+[ext_resource type="Texture2D" uid="uid://78jgu1re3fvj" path="res://warrior/WarriorRightAttack01.png" id="3_2tkba"]
+[ext_resource type="Texture2D" uid="uid://cj6ow7ivl45xb" path="res://warrior/WarriorUpAttack01.png" id="4_mroqb"]
+[ext_resource type="Texture2D" uid="uid://cghr2mrl4p8dg" path="res://warrior/WarriorLeftWalk.png" id="5_xycar"]
+[ext_resource type="PackedScene" uid="uid://ddplmg8f5j027" path="res://Utility/hurt_box.tscn" id="7_2qtq6"]
+[ext_resource type="Texture2D" uid="uid://4ge5x18ynhdr" path="res://Utility/exp_background.png" id="8_b61qk"]
+[ext_resource type="Texture2D" uid="uid://c7oxnhlhs7iox" path="res://Utility/exp_progress.png" id="9_b5ppp"]
+[ext_resource type="AudioStream" uid="uid://crfad14nc5lxb" path="res://Sounds/levelUp.mp3" id="10_yxcsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwgpk"]
+atlas = ExtResource("1_4fmsv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7qsn"]
+atlas = ExtResource("1_4fmsv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukm6r"]
+atlas = ExtResource("2_ynj02")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmajy"]
+atlas = ExtResource("1_4fmsv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf5sb"]
+atlas = ExtResource("3_2tkba")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1tka"]
+atlas = ExtResource("4_mroqb")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u1ri"]
+atlas = ExtResource("1_4fmsv")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dle5"]
+atlas = ExtResource("1_4fmsv")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8vh5"]
+atlas = ExtResource("5_xycar")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dbxv"]
+atlas = ExtResource("5_xycar")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hid64"]
+atlas = ExtResource("5_xycar")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ixja"]
+atlas = ExtResource("5_xycar")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp2hb"]
+atlas = ExtResource("5_xycar")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb6ei"]
+atlas = ExtResource("5_xycar")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p881i"]
+atlas = ExtResource("5_xycar")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ripxc"]
+atlas = ExtResource("5_xycar")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btanf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwgpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7qsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukm6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmajy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf5sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1tka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukm6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u1ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dle5")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8vh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dbxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hid64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ixja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp2hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb6ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p881i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ripxc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sky2e"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1r8pl"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fh5e5"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcnwf"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_07h4a"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_sky2e")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1r8pl")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_fh5e5")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_bcnwf")
+blend_point_3/pos = Vector2(0, -1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4vqxk"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kw2hj"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msxat"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hgwvc"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dndax"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4vqxk")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kw2hj")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_msxat")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_hgwvc")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lfe07"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l0n7p"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2pa23"]
+states/attack/node = SubResource("AnimationNodeBlendSpace2D_07h4a")
+states/attack/position = Vector2(556, 100)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_dndax")
+states/walk/position = Vector2(356, 100)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_lfe07"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_l0n7p")]
+
+[sub_resource type="Animation" id="Animation_xv1d3"]
+length = 1.28571
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1, 1.14286),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["attack"]
+}
+
+[sub_resource type="Animation" id="Animation_qef8s"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["walk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hww53"]
+_data = {
+"attack": SubResource("Animation_xv1d3"),
+"walk": SubResource("Animation_qef8s")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5fwc"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra74m"]
+size = Vector2(11, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgy20"]
+radius = 432.723
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xv3hq"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8oeq5"]
+
+[node name="Character" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_nexjq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
+sprite_frames = SubResource("SpriteFrames_btanf")
+animation = &"attack"
+frame = 8
+
+[node name="AnimationTree" type="AnimationTree" parent="." groups=["player"]]
+tree_root = SubResource("AnimationNodeStateMachine_2pa23")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hww53")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j5fwc")
+
+[node name="HurtBox" parent="." instance=ExtResource("7_2qtq6")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_ra74m")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="ArrowTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="ArrowAttackTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="CrystalSpellTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 2.5
+
+[node name="CrystalSpellAttackTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 0.125
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_lgy20")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_xv3hq")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_8oeq5")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+scale = Vector2(3.34, 2)
+transform = Transform2D(3.34, 0, 0, 2, 0, 0)
+
+[node name="GUI" type="Control" parent="GUILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 352.0
+offset_bottom = 198.0
+
+[node name="ExpBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_right = 2.477
+anchor_bottom = 1.321
+offset_left = 258.804
+offset_top = 162.0
+offset_right = -657.676
+offset_bottom = -293.56
+scale = Vector2(0.9, 0.9)
+texture_under = ExtResource("8_b61qk")
+texture_progress = ExtResource("9_b5ppp")
+
+[node name="LabelLevel" type="Label" parent="GUILayer/GUI/ExpBar"]
+unique_name_in_owner = true
+texture_filter = 5
+layout_mode = 0
+offset_left = 564.646
+offset_top = 0.555556
+offset_right = 664.646
+offset_bottom = 26.5556
+scale = Vector2(0.75, 0.75)
+text = "Level: 1"
+horizontal_alignment = 1
+
+[node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 200.0
+offset_right = 1700.0
+offset_bottom = 600.0
+
+[node name="Label_LevelUp" type="Label" parent="GUILayer/GUI/LevelUp"]
+texture_filter = 5
+layout_mode = 0
+offset_left = 65.0
+offset_top = 26.5
+offset_right = 134.0
+offset_bottom = 52.5
+text = "Level up!"
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 85.0
+offset_right = 190.0
+offset_bottom = 145.0
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
+stream = ExtResource("10_yxcsr")
+volume_db = -15.0
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attack/ArrowTimer" to="." method="_on_arrow_timer_timeout"]
+[connection signal="timeout" from="Attack/ArrowAttackTimer" to="." method="_on_arrow_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/CrystalSpellTimer" to="." method="_on_crystal_spell_timer_timeout"]
+[connection signal="timeout" from="Attack/CrystalSpellAttackTimer" to="." method="_on_crystal_spell_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+
+[editable path="HurtBox"]

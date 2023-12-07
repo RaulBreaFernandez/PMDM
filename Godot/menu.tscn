@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cscwd18qddioi"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_67fyu"]
+[ext_resource type="PackedScene" uid="uid://d4i3kr4xl8ny" path="res://Utility/basic_button.tscn" id="1_ur2up"]
+[ext_resource type="Texture2D" uid="uid://cuta6mq1kkr5p" path="res://world/background.png" id="2_cl2bq"]
+[ext_resource type="AudioStream" uid="uid://d3pudqqkk2f01" path="res://Sounds/BGMenuMusic.mp3" id="4_28r37"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_67fyu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1935.0
+offset_bottom = 1083.0
+texture = ExtResource("2_cl2bq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 6.0
+offset_right = 1613.0
+offset_bottom = 558.0
+theme_override_font_sizes/font_size = 200
+text = "Vampiren't
+Survivors
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play_button" parent="." instance=ExtResource("1_ur2up")]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 833.0
+offset_right = 1227.0
+offset_bottom = 978.0
+scale = Vector2(0.75, 0.75)
+text = "QUIT"
+
+[node name="Quit_Button" parent="." instance=ExtResource("1_ur2up")]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 628.0
+offset_right = 1169.0
+offset_bottom = 773.0
+text = "PLAY
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_28r37")
+autoplay = true
+
+[connection signal="click_end" from="Play_button" to="." method="_on_play_button_click_end"]
+[connection signal="click_end" from="Quit_Button" to="." method="_on_quit_button_click_end"]

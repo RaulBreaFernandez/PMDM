@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://b52cmibh62nkx"]
+
+[ext_resource type="Texture2D" uid="uid://dfcl4llfjlf7o" path="res://world/baldosas.png" id="1_eqmwv"]
+[ext_resource type="PackedScene" uid="uid://bmy42ook7bwuy" path="res://Utility/enemy_spawner.tscn" id="1_hhcg6"]
+[ext_resource type="PackedScene" uid="uid://dcyehsd7att4k" path="res://world/character.tscn" id="2_4sju0"]
+[ext_resource type="AudioStream" uid="uid://dyrctamhy6ui4" path="res://Sounds/BGMusic.wav" id="4_68wxx"]
+[ext_resource type="PackedScene" uid="uid://cnnssdtia34px" path="res://world/enemy.tscn" id="5_feesj"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_mrn2y"]
+[ext_resource type="PackedScene" uid="uid://bb2pvcb747h6e" path="res://Utility/experience_gem.tscn" id="7_1cxtf"]
+
+[sub_resource type="Resource" id="Resource_fpfu3"]
+script = ExtResource("6_mrn2y")
+time_start = 0
+time_end = 5
+enemy = ExtResource("5_feesj")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+texture = ExtResource("1_eqmwv")
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 4000)
+
+[node name="Character" parent="." instance=ExtResource("2_4sju0")]
+position = Vector2(0, 1)
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_68wxx")
+autoplay = true
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_hhcg6")]
+position = Vector2(38, 39)
+spawns = Array[ExtResource("6_mrn2y")]([SubResource("Resource_fpfu3")])
+
+[node name="Loot" type="Node2D" parent="."]
+
+[node name="ExperienceGem" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(93, -92)
+experience = 50

@@ -1,0 +1,162 @@
+[gd_scene load_steps=24 format=3 uid="uid://b52cmibh62nkx"]
+
+[ext_resource type="Texture2D" uid="uid://dfcl4llfjlf7o" path="res://world/baldosas.png" id="1_eqmwv"]
+[ext_resource type="PackedScene" uid="uid://bmy42ook7bwuy" path="res://Utility/enemy_spawner.tscn" id="1_hhcg6"]
+[ext_resource type="PackedScene" uid="uid://dcyehsd7att4k" path="res://world/character.tscn" id="2_4sju0"]
+[ext_resource type="AudioStream" uid="uid://dyrctamhy6ui4" path="res://Sounds/BGMusic.wav" id="4_68wxx"]
+[ext_resource type="PackedScene" uid="uid://cnnssdtia34px" path="res://world/enemy_flying_eye.tscn" id="5_avr55"]
+[ext_resource type="PackedScene" uid="uid://8yxwrjw5nusl" path="res://world/enemy_mushroom.tscn" id="5_uee6h"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="6_1u7q2"]
+[ext_resource type="PackedScene" uid="uid://bb2pvcb747h6e" path="res://Utility/experience_gem.tscn" id="7_1cxtf"]
+[ext_resource type="PackedScene" uid="uid://b35rxk2ahkcrb" path="res://world/enemy_fire_skull.tscn" id="7_hb7o7"]
+[ext_resource type="PackedScene" uid="uid://6y0f1mik22g0" path="res://world/enemy_fire_worm.tscn" id="7_qdrf2"]
+[ext_resource type="PackedScene" uid="uid://daqngnrsod7y7" path="res://world/enemy_goblin.tscn" id="7_w4sro"]
+[ext_resource type="PackedScene" uid="uid://ccs2fop22ag6j" path="res://world/enemy_skeleton.tscn" id="9_l5hx1"]
+[ext_resource type="PackedScene" uid="uid://caxvrawwc3pg1" path="res://world/enemy_demon.tscn" id="12_efuvq"]
+[ext_resource type="PackedScene" uid="uid://ceqhu4cuhds7f" path="res://world/enemy_final_boss.tscn" id="13_jv0lx"]
+
+[sub_resource type="Resource" id="Resource_a371d"]
+script = ExtResource("6_1u7q2")
+time_start = 1
+time_end = 240
+enemy = ExtResource("5_avr55")
+enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_23gx2"]
+script = ExtResource("6_1u7q2")
+time_start = 60
+time_end = 240
+enemy = ExtResource("7_w4sro")
+enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_kukjn"]
+script = ExtResource("6_1u7q2")
+time_start = 90
+time_end = 240
+enemy = ExtResource("7_qdrf2")
+enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_4hoep"]
+script = ExtResource("6_1u7q2")
+time_start = 120
+time_end = 240
+enemy = ExtResource("9_l5hx1")
+enemy_num = 3
+enemy_spawn_delay = 10
+
+[sub_resource type="Resource" id="Resource_eqf31"]
+script = ExtResource("6_1u7q2")
+time_start = 150
+time_end = 240
+enemy = ExtResource("7_hb7o7")
+enemy_num = 0
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_vvvm8"]
+script = ExtResource("6_1u7q2")
+time_start = 180
+time_end = 240
+enemy = ExtResource("5_uee6h")
+enemy_num = 2
+enemy_spawn_delay = 15
+
+[sub_resource type="Resource" id="Resource_jfp2a"]
+script = ExtResource("6_1u7q2")
+time_start = 200
+time_end = 240
+enemy = ExtResource("12_efuvq")
+enemy_num = 1
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_0y0qj"]
+script = ExtResource("6_1u7q2")
+time_start = 240
+time_end = 240
+enemy = ExtResource("13_jv0lx")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_773wc"]
+size = Vector2(10000, 20)
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+position = Vector2(-58, 13)
+texture = ExtResource("1_eqmwv")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
+
+[node name="Character" parent="." instance=ExtResource("2_4sju0")]
+position = Vector2(0, 1)
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_68wxx")
+autoplay = true
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_hhcg6")]
+spawns = Array[ExtResource("6_1u7q2")]([SubResource("Resource_a371d"), SubResource("Resource_23gx2"), SubResource("Resource_kukjn"), SubResource("Resource_4hoep"), SubResource("Resource_eqf31"), SubResource("Resource_vvvm8"), SubResource("Resource_jfp2a"), SubResource("Resource_0y0qj")])
+
+[node name="Loot" type="Node2D" parent="."]
+
+[node name="ExperienceGem2" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(-2, -3)
+
+[node name="ExperienceGem7" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(-2, -3)
+
+[node name="ExperienceGem3" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(6, 10)
+
+[node name="ExperienceGem5" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(5, 4)
+
+[node name="ExperienceGem6" parent="Loot" instance=ExtResource("7_1cxtf")]
+position = Vector2(10, -2)
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -4997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(-57.9999, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_773wc")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-5068, -45)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-57.9999, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_773wc")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 5023)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(-57.9999, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_773wc")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(4952, 71)
+rotation = -4.71239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(-57.9999, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_773wc")
+one_way_collision = true
+one_way_collision_margin = 0.0

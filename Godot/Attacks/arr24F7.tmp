@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://chhnshy6gdsrs"]
+
+[ext_resource type="Texture2D" uid="uid://b6tu7cpuvo4tw" path="res://Attacks/Arrow.png" id="1_dc12v"]
+[ext_resource type="Script" path="res://Attacks/arrow.gd" id="1_ff2uu"]
+[ext_resource type="AudioStream" uid="uid://bdyk4islc46g3" path="res://Sounds/ArrowSoundEffect.mp3" id="3_pagt7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sdqf"]
+size = Vector2(5.65685, 20.1525)
+
+[node name="Arrow" type="Area2D" groups=["attack"]]
+top_level = true
+texture_filter = 3
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ff2uu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = -1.5708
+scale = Vector2(0.53125, 0.46875)
+texture = ExtResource("1_dc12v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.375, -0.375)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_3sdqf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pagt7")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

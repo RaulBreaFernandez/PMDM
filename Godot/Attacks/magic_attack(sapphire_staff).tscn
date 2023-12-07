@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://f5ji03e007ov"]
+
+[ext_resource type="Script" path="res://Attacks/MagicAttack(SapphireStaff).gd" id="1_gh5r2"]
+[ext_resource type="Texture2D" uid="uid://d07s6gh2oqqj8" path="res://Attacks/EnergyBall.png" id="2_ei6hr"]
+[ext_resource type="AudioStream" uid="uid://c5f1ws1ct6n0i" path="res://Sounds/Ice Magic Trail Sound Effect.mp3" id="3_dsho2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ahim"]
+radius = 4.2265
+height = 18.3848
+
+[sub_resource type="Animation" id="Animation_vnpmk"]
+resource_name = "Attack"
+length = 0.15
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_6ipo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7qbm5"]
+_data = {
+"Attack": SubResource("Animation_vnpmk"),
+"RESET": SubResource("Animation_6ipo8")
+}
+
+[node name="MagicAttack(SapphireStaff)" type="Area2D" groups=["attack"]]
+top_level = true
+texture_filter = 5
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_gh5r2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.453177, 0.5)
+rotation = 3.92699
+scale = Vector2(0.22708, 0.22708)
+texture = ExtResource("2_ei6hr")
+hframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 5
+position = Vector2(0, 2)
+rotation = 2.35619
+shape = SubResource("CapsuleShape2D_3ahim")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7qbm5")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="AttackCast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dsho2")
+volume_db = -10.0
+autoplay = true

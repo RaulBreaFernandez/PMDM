@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgwadqifja64x"]
+
+[ext_resource type="Script" path="res://Utility/upgrade_bd.gd" id="1_5eumv"]
+
+[node name="UpgradeBD" type="Node"]
+script = ExtResource("1_5eumv")

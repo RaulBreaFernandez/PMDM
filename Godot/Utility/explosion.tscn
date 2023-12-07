@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch0p1pfwxyjk2"]
+
+[ext_resource type="Texture2D" uid="uid://bran8kq8mq4qg" path="res://Utility/Effect_PuffAndStars_1_108x116.png" id="1_4icbw"]
+[ext_resource type="Script" path="res://Utility/explosion.gd" id="2_r8ihk"]
+[ext_resource type="AudioStream" uid="uid://dcamktppcw61w" path="res://Sounds/hitmarker.mp3" id="3_pgrtp"]
+
+[sub_resource type="Animation" id="Animation_ptjm1"]
+resource_name = "Explosion"
+step = 0.015
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.015, 0.03, 0.045, 0.06, 0.075, 0.09, 0.105, 0.12, 0.135, 0.15, 0.165, 0.18, 0.195, 0.21, 0.225, 0.24, 0.255, 0.27, 0.285, 0.3, 0.315, 0.33, 0.345, 0.36, 0.375, 0.39, 0.405, 0.42, 0.435, 0.45, 0.465, 0.48, 0.495, 0.51, 0.525, 0.54, 0.555, 0.57, 0.585, 0.6, 0.615, 0.63, 0.645, 0.66, 0.675, 0.69, 0.705, 0.72, 0.735, 0.75, 0.765, 0.78, 0.795, 0.81, 0.825, 0.84, 0.855, 0.87, 0.885, 0.9, 0.915, 0.93, 0.945, 0.96, 0.975, 0.99, 1.005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 78]
+}
+
+[sub_resource type="Animation" id="Animation_53qkd"]
+length = 0.001
+step = 0.015
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2oln"]
+_data = {
+"Explosion": SubResource("Animation_ptjm1"),
+"RESET": SubResource("Animation_53qkd")
+}
+
+[node name="Explosion" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_4icbw")
+hframes = 10
+vframes = 8
+frame = 67
+script = ExtResource("2_r8ihk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y2oln")
+}
+
+[node name="Hitmarker" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pgrtp")
+volume_db = -20.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

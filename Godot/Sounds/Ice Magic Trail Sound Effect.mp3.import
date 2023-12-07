@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5f1ws1ct6n0i"
+path="res://.godot/imported/Ice Magic Trail Sound Effect.mp3-438883692b461dcbb20789c51f68661a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Ice Magic Trail Sound Effect.mp3"
+dest_files=["res://.godot/imported/Ice Magic Trail Sound Effect.mp3-438883692b461dcbb20789c51f68661a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
