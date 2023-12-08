@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ceqhu4cuhds7f"]
+[gd_scene load_steps=14 format=3 uid="uid://ceqhu4cuhds7f"]
 
 [ext_resource type="Script" path="res://world/enemy.gd" id="1_raaiw"]
 [ext_resource type="Texture2D" uid="uid://dxekt70ndeiqm" path="res://enemy/spr_NecromancerWalk_strip10.png" id="2_5xk7d"]
 [ext_resource type="PackedScene" uid="uid://ddplmg8f5j027" path="res://Utility/hurt_box.tscn" id="3_nrtw0"]
 [ext_resource type="PackedScene" uid="uid://88muhmklt8cx" path="res://Utility/hit_box.tscn" id="4_lk61k"]
 [ext_resource type="AudioStream" uid="uid://dcamktppcw61w" path="res://Sounds/hitmarker.mp3" id="5_glbt7"]
+[ext_resource type="AudioStream" uid="uid://dwr2pth8kbq7f" path="res://Sounds/Victory Sound.mp3" id="6_wh10j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjcl0"]
 radius = 13.0
@@ -62,11 +63,6 @@ size = Vector2(62.875, 84)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_raaiw")
-movement_speed = 60
-hp = 1000
-knockback_recovery = 10
-experience = 100
-damage = 25
 
 [node name="Walk" type="Sprite2D" parent="."]
 texture_filter = 5
@@ -103,6 +99,9 @@ shape = SubResource("RectangleShape2D_vpagg")
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_glbt7")
 volume_db = -10.0
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wh10j")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 

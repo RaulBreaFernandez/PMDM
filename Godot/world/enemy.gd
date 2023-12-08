@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var hp = 1
 @export var knockback_recovery = 1
 @export var experience = 1
+@export var enemy_counter = 0
 @export var damage = 1
 
 var knockback = Vector2.ZERO
@@ -21,7 +22,6 @@ var exp_gem = preload("res://Utility/experience_gem.tscn")
 signal remove_from_array(object)
 
 func _ready():
-	
 	animation.play("walk")
 	
 func death():

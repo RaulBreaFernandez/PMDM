@@ -73,14 +73,13 @@ var flying_sword_level = 0
 var enemy_close = []
 
 func _ready():
-		animation.play("walk")
-		arrow_attack()
-		crystal_spell_attack()
-		silver_sword_attack()
-		set_expbar(experience, calculate_experiencecap())
-		_on_hurt_box_hurt(0, 0, 0)
+	animation.play("walk")
+	arrow_attack()
+	crystal_spell_attack()
+	silver_sword_attack()
+	set_expbar(experience, calculate_experiencecap())
+	_on_hurt_box_hurt(0, 0, 0)
 		
-
 func crystal_spell_attack():
 	if crystal_spell_level > 0:
 		crystalSpellTimer.wait_time = crystal_spell_attack_speed
@@ -120,19 +119,17 @@ func _physics_process(_delta):
 	else:
 		get_m = m
 	labelTimer.text = str(get_m)+":"+str(get_s)
-	
 	get_input()
 	move_and_slide()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
-	hp -= damage
+	hp -= clamp(damage-armor, 1.0, 999.0)
 	healthbar.max_value = maxhp
 	healthbar.value = hp
 	if hp <= 0:
 		death()
 
 func _on_arrow_attack_timer_timeout():
-	print(arrow_ammo)
 	if arrow_ammo > 0:
 		var arrow_attack = arrow.instantiate()
 		arrow_attack.position = position
@@ -361,7 +358,14 @@ func get_random_item():
 
 func _on_timer_timeout():
 	s += 1
-	
+	time += 1
+	print(time)
+	if hp > 0 and time > 300:
+		deathPanel.visible = true
+		get_tree().paused = true
+		labelResult.text = "YOU WIN!"
+		victorySound.play()
+
 func adjust_gui_collection(upgrade):
 	var get_upgraded_displaynames = UpgradeBd.UPGRADE[upgrade]["display_name"]
 	var get_type = UpgradeBd.UPGRADE[upgrade]["type"]
@@ -380,9 +384,13 @@ func adjust_gui_collection(upgrade):
 func death():
 	deathPanel.visible = true
 	get_tree().paused = true
-	if time >= 300:
+	if time >= 240:
 		labelResult.text = "YOU WIN!"
 		victorySound.play()
 	else:
 		labelResult.text = "YOU LOSE!"
 		defeatSound.play()
+
+func _on_button_menu_click_end():
+	get_tree().paused = false
+	var _level = get_tree().change_scene_to_file("res://menu.tscn")
