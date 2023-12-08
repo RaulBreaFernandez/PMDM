@@ -360,7 +360,7 @@ func _on_timer_timeout():
 	s += 1
 	time += 1
 	print(time)
-	if hp > 0 and time > 300:
+	if hp > 0 and time > 360:
 		deathPanel.visible = true
 		get_tree().paused = true
 		labelResult.text = "YOU WIN!"
@@ -384,7 +384,7 @@ func adjust_gui_collection(upgrade):
 func death():
 	deathPanel.visible = true
 	get_tree().paused = true
-	if time >= 240:
+	if time >= 360:
 		labelResult.text = "YOU WIN!"
 		victorySound.play()
 	else:
